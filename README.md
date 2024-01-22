@@ -14,6 +14,9 @@
     - signup form
     - form validation
     - useref hook
+    - Firebase setup
+    - Deployed to production
+    - create signup user account in firebase 
 
 - browse page ( after authentication)
     - Header

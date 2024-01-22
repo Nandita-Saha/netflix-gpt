@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import {CheckValidData} from "../utils/validate";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -15,18 +17,56 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
 
+
   const handleButtonClick = () => {
     //validate the form data
     
-    // console.log(email.current.value); // prints the value recieved in input field
-    // console.log(password.current.value); 
-    const message = CheckValidData(name.current.value, email.current.value, password.current.value); // prints the validation message coming from validate.js
+    console.log(email?.current?.value); // prints the value recieved in input field
+    console.log(password?.current?.value); 
+    const message = CheckValidData(name?.current?.value, email?.current?.value, password?.current?.value); // prints the validation message coming from validate.js
 
     console.log(message);
     setErrorMessage(message); //setting the error message 
 
+    if(message) return;
+
     // sign in/ sign up
-  }
+
+    if(!isSignInForm){
+        // sign up logic
+        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+          .then((userCredential) => {
+            // Signed up 
+            const user = userCredential.user;
+            // ...
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+            setErrorMessage(errorCode + "-" + errorMessage);
+          });
+    }
+    else{
+        // sign in logic
+        signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+          .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+
+            console.log(user);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            setErrorMessage(errorCode + "-" + errorMessage);
+          });
+    }
+
+  };
 
   return (
     <div className="relative bg-loginimage bg-cover bg-center w-full h-full min-h-screen overflow-x-hidden">
