@@ -16,7 +16,10 @@
     - useref hook
     - Firebase setup
     - Deployed to production
-    - create signup user account in firebase 
+    - create signup user account in firebase
+    - implement sign in
+    - created redux store with userSlice
+
 
 - browse page ( after authentication)
     - Header
