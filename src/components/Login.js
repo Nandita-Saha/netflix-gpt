@@ -4,11 +4,13 @@ import Header from "./Header";
 import {CheckValidData} from "../utils/validate";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isSignInForm, setIsSignInForm] = useState(true);
-
   const [errorMessage, setErrorMessage] = useState(null);
 
   const name = useRef(null); // we are using useref to catch the reference of the input of email field
@@ -27,7 +29,7 @@ const Login = () => {
     console.log(password?.current?.value); 
     const message = CheckValidData(name?.current?.value, email?.current?.value, password?.current?.value); // prints the validation message coming from validate.js
 
-    console.log(message);
+    // console.log(message);
     setErrorMessage(message); //setting the error message 
 
     if(message) return;
@@ -39,16 +41,22 @@ const Login = () => {
         createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
           .then((userCredential) => {
             // Signed up 
-            const user = userCredential.user;
-            
+            const user = userCredential.user;            
             // update the user profile by including displayname
-
             updateProfile(user, {
-              displayName: name.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+              displayName: name.current.value, 
+              photoURL: "https://avatars.githubusercontent.com/u/64885740?v=4"
             }).then(() => {
               // Profile updated!             
-
-            console.log(user);
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
             navigate("/browse");
 
             }).catch((error) => {
