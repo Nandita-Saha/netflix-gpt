@@ -9,6 +9,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { PROFILE_AVATAR } from "../utils/constants";
 
 const Login = () => {
  
@@ -55,7 +56,7 @@ const Login = () => {
           // update the user profile by including displayname
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/64885740?v=4",
+            photoURL: PROFILE_AVATAR,
           })
             .then(() => {
               // Profile updated!

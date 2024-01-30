@@ -21,6 +21,9 @@
     - created redux store with userSlice
     - implemented sign out and authentication
     - updated profile
+    - Bugfix: making protected browse route in case of login/logout
+    - unsubscribed to the onAuthStateChange callback
+    - added custom.js for hardcoded urls
     - added movies from TMDB api
 
 

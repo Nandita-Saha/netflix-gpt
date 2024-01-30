@@ -1,0 +1,2 @@
+// export const PROFILE_AVATAR = "https://avatars.githubusercontent.com/u/64885740?v=4";
+export const PROFILE_AVATAR = "https://t3.ftcdn.net/jpg/05/57/20/16/360_F_557201692_P86sh0v8g00VseZacjBOOKJmGLSvEpQb.jpg";
