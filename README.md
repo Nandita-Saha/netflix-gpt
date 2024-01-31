@@ -24,7 +24,8 @@
     - Bugfix: making protected browse route in case of login/logout
     - unsubscribed to the onAuthStateChange callback
     - added custom.js for hardcoded urls
-    - added movies from TMDB api
+    - registered tmdb api, created app and got api key
+    - fetched movies from TMDB api
 
 
 - browse page ( after authentication)
