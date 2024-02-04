@@ -1,23 +1,24 @@
-import React, { useEffect } from 'react'
-import { API_OPTIONS } from '../utils/constants'
+import React from "react";
+import { useSelector } from "react-redux";
+import useMovieTrailer from "../hooks/useMovieTrailer";
 
-const VideoContainer = ({movieId}) => {
 
-    const getMovieVideos = async()=>{
-        const data = await fetch('https://api.themoviedb.org/3/movie/572802/videos', API_OPTIONS);
-
-        const json = await data.json();
-        console.log(json);
-
-    }
-
-    useEffect(()=>{
-        getMovieVideos();
-    },[]);
-
+const VideoContainer = ({ movieId }) => {
+  const getTrailerVideo = useSelector(store => store.movies?.trailerVideo);
+  useMovieTrailer(movieId);
+  
   return (
-    <div>VideoContainer</div>
-  )
-}
+    <div>
+      <iframe
+        className="w-full aspect-video"
+        src={"https://www.youtube.com/embed/"+ getTrailerVideo?.key + "?&autoplay=1&mute=1"}
+        title="YouTube video player"  
+        
+        allow="autoplay;"
+        allowFullScreen
+      ></iframe>
+    </div>
+  );
+};
 
-export default VideoContainer
+export default VideoContainer;

@@ -26,6 +26,8 @@
     - added custom.js for hardcoded urls
     - registered tmdb api, created app and got api key
     - fetched movies from TMDB api
+    - created custom hooks for fetching movie trailers and show then on main container
+    - used tailwind to play trailer on background at muted and autoplay
 
 
 - browse page ( after authentication)
