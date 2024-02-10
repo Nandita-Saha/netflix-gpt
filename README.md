@@ -28,6 +28,8 @@
     - fetched movies from TMDB api
     - created custom hooks for fetching movie trailers and show then on main container
     - used tailwind to play trailer on background at muted and autoplay
+    - found TMDB api for popular and now playing movies
+    - created list for showing popular and other movie suggestions using custom hooks
 
 
 - browse page ( after authentication)
