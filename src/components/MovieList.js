@@ -2,7 +2,7 @@ import React from 'react'
 import MovieCard from './MovieCard'
 
 const MovieList = ({title, getMovies}) => {
-    console.log(getMovies);
+    // console.log(getMovies);
     // const posterImg = getMovies?.poster_path;
     // console.log(getMovies[0]?.poster_path);
     
