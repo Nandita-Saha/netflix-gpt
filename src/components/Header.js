@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { SUPPORTED_LANG } from "../utils/constants";
 
 
 // import headerLogo from "/images/Netflix_Logo_PMS.png";
@@ -52,6 +54,12 @@ const Header = () => {
     return ()=> unsubscribe();
   }, []);
 
+const handleGptSearchClick = ()=>{
+  // toggle gptsearch button
+  dispatch(toggleGptSearchView());
+
+}
+
   return (
     <div className="bg-gradient-to-b absolute top-0 z-50 w-full from-black flex items-center justify-between px-5">
       <div className="w-44 ">
@@ -60,6 +68,11 @@ const Header = () => {
 
       {newUser && (
         <div>
+          <select>
+            {SUPPORTED_LANG.map(lang => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option> )}
+           
+          </select>
+          <button className="bg-green-700 text-white rounded-sm mx-5 p-3" onClick={handleGptSearchClick}>GPT Search</button>
           <img
             className="w-10 h-10 mr-5 rounded-lg inline-block"
             src={newUser?.photoURL}
