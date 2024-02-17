@@ -5,6 +5,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
+import HtmlToImage from "./HtmlToImage";
 
 
 const Body = () => {
@@ -18,6 +19,10 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/html-to-img",
+      element: <HtmlToImage />,
     },
   ]);
 
