@@ -7,9 +7,9 @@ const lang={
         search: "खोज",
         placeholder: "आज आप क्या देखना चाहेंगे?",
     },
-    spanish: {
-        search: "buscar",
-        placeholder: "¿Qué te gustaría ver hoy?",
+    bengali: {
+        search: "অনুসন্ধান করুন",
+        placeholder: "আপনি আজ কি দেখতে চান?",
     },
 
 };
